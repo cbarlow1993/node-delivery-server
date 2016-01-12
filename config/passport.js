@@ -45,7 +45,6 @@ module.exports = function(passport) {
         var response = request("POST", Jira.jiraHost + "/rest/auth/1/session", {json: {username: email, password: password } } )
 
         if (response.statusCode === 200) {
-            var x = JSON.parse(decoder.write(response.body));
             return done(null, {email : email, password : password })
         } else {    
             return done(null, false, req.flash('loginMessage', 'Incorrect Username/Password'))
