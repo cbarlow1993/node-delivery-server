@@ -1,0 +1,12 @@
+/*!
+ * Manual Adjustments to Bootstrap theme. 
+ * Author : Chris Barlow
+ */
+
+nav #logout-button {
+    vertical-align: middle;
+    margin-top: 10px;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+

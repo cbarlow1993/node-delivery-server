@@ -1,0 +1,20 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+<header>
+        <% include ../partials/header %>
+</header>
+<div class="container">
+
+	<div class="jumbotron text-center">
+		<h1><%= error.code %></h1>
+        <p><%= error.message %></p>		
+	</div>
+
+</div>
+</body>
+</html>
