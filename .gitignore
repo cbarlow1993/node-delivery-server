@@ -78,3 +78,4 @@ node_modules
 config/secretDatabase.js
 
 config/secretAuth.js
+config/jira.js
