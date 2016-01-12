@@ -1,3 +1,9 @@
+var PythonShell = require('python-shell');
+var config      = require('../config/config');
+
+
+
+
 // app/routes.js
 module.exports = function(app, passport) {
 
@@ -6,7 +12,8 @@ module.exports = function(app, passport) {
 	// =====================================
 	app.get('/', function(req, res) {
 		res.render('pages/index.ejs', {
-            pageTitle: 'Index'
+            pageTitle: 'Index',
+            user: req.user
         }); // load the index.ejs file
 	});
 
@@ -18,7 +25,8 @@ module.exports = function(app, passport) {
 		// render the page and pass in any flash data if it exists
 		res.render('pages/login.ejs', {
             pageTitle: 'Login',
-            message: req.flash('loginMessage')
+            message: req.flash('loginMessage'),
+            user: req.user
         });
 	});
 
@@ -30,7 +38,7 @@ module.exports = function(app, passport) {
 	}));
 
 	// =====================================
-	// PROFILE SECTION =========================
+	// PROFILE SECTION =====================
 	// =====================================
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
@@ -48,6 +56,36 @@ module.exports = function(app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
+    
+    
+    app.get('/test', isLoggedIn, function(req, res) {
+    
+        res.render('pages/test', {
+            pageTitle: 'Test',
+            user: req.user
+        });
+    });
+    
+    app.post('/test', isLoggedIn, function(req, res) {
+        
+         var options = {
+          mode: 'text',
+          pythonPath: config.pythonPath,
+          pythonOptions: ['-u'],
+          scriptPath: config.pythonScriptsDirectory,
+          args: ['value1', 'value2', 'value3']
+        };
+        
+        var pyshell = new PythonShell('printRange.py', options);
+        
+        pyshell.on('message', function (message) {
+          console.log(message);
+        });
+        
+        res.sendStatus(200)
+    });
+    
+    
 };
 
 // route middleware to make sure

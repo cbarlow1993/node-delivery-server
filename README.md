@@ -1,18 +1,16 @@
-# Complete Guide to Node Authentication
+# Delivery Server
 
-Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication
 
-We will be using Passport to authenticate users locally, with Facebook, Twitter, and Google.
+Uses local passport to authenticate with the a Jira request. 
 
 ## Instructions
 
 If you would like to download the code and try it for yourself:
 
-1. Clone the repo: `git clone git@github.com:scotch-io/node-authentication-guide`
-2. Install packages: `npm install`
-3. Change out the database configuration in config/database.js
-4. Launch: `node server.js`
-5. Visit in your browser at: `http://localhost:8080`
+1. Install packages: `npm install`
+2. Change out the jira URL configuration in config/jira.js
+3. Launch: `node server.js`
+4. Visit in your browser at: `http://localhost:3000`
 
 
 

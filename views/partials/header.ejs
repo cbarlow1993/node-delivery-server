@@ -8,11 +8,12 @@
                 YouView Delivery Management Tool
             </a>
         </div>
-
+        <% if (typeof user !== 'undefined') { %>
         <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li><a href="/tools">Tools</a></li>
+            <li><a href="/test">Tests</a></li>
         </ul>
+        <% } %>
          <ul class="nav navbar-nav navbar-right">
             <% if (typeof user !== 'undefined') { %>
                 <li><a href ="#"><%= user.email %></a></li>

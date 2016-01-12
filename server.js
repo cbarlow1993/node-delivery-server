@@ -12,6 +12,10 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var passport     = require('passport');
 var flash        = require('connect-flash');
+// Test
+var http         = require('http');
+var server       = http.createServer(app);
+var io           = require('socket.io').listen(server);
 
 
 // configuration ===============================================================
@@ -67,8 +71,14 @@ if (app.get('env') === 'development') {
     });
 }
 
-
-
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+})
 // launch ======================================================================
-app.listen(port);
+
+server.listen(port)
+
 console.log('The magic happens on port ' + port);
